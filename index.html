@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Q-ext by daviddenton</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/daviddenton/q-ext">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/daviddenton/q-ext/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/daviddenton/q-ext/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Q-ext</h1>
+          <p>Q extensions</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/daviddenton">daviddenton</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="q-ext" class="anchor" href="#q-ext" aria-hidden="true"><span class="octicon octicon-link"></span></a>q-ext</h1>
+
+<p><a href="http://badge.fury.io/js/q-ext"><img src="https://badge.fury.io/js/q-ext.svg" alt="NPM version"></a>
+<a href="https://travis-ci.org/daviddenton/q-ext"><img src="https://travis-ci.org/daviddenton/q-ext.png?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/daviddenton/q-ext"><img src="https://coveralls.io/repos/daviddenton/q-ext/badge.png" alt="Coverage Status"></a>
+<a href="https://david-dm.org/daviddenton/q-ext"><img src="https://david-dm.org/daviddenton/q-ext.png" alt="Dependency Status"></a>
+<a href="https://david-dm.org/daviddenton/q-ext#info=devDependencies"><img src="https://david-dm.org/daviddenton/q-ext/dev-status.png" alt="devDependency Status"></a></p>
+
+<h3>
+<a id="what" class="anchor" href="#what" aria-hidden="true"><span class="octicon octicon-link"></span></a>What</h3>
+
+<p>Methods to extend the Q promise library.</p>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Via npm, simply run: <code>npm install q-ext</code></p>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<h2>
+<a id="allsettled" class="anchor" href="#allsettled" aria-hidden="true"><span class="octicon octicon-link"></span></a>allSettled</h2>
+
+<p>Simply pass an object with named promises. The results are grouped by result (fulfilled/rejected) which can then
+be spread() into a node-like callback which gives you the errorsByName and resultsByName: </p>
+
+<p>Simply pass an object with named promises. The results are grouped by result (fulfilled/rejected) which can then
+be spread() into a node-like callback which gives you the errorsByName and resultsByName:</p>
+
+<div class="highlight highlight-javascript"><pre>qExt.allSettled({
+    aSuccessfulPromise<span class="pl-k">:</span> q.resolve(<span class="pl-s1"><span class="pl-pds">'</span>result<span class="pl-pds">'</span></span>),
+    anotherSuccessfulPromise<span class="pl-k">:</span> q.resolve(<span class="pl-s1"><span class="pl-pds">'</span>anotherResult<span class="pl-pds">'</span></span>),
+    anUnsuccessfulPromise<span class="pl-k">:</span> q.reject(<span class="pl-s1"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>),
+    anotherUnsuccessfulPromise<span class="pl-k">:</span> q.reject(<span class="pl-s1"><span class="pl-pds">'</span>anotherError<span class="pl-pds">'</span></span>)
+}).spread(<span class="pl-st">function</span> (<span class="pl-vpf">errorsByName</span>, <span class="pl-vpf">successesByName</span>) {
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>errors:<span class="pl-pds">'</span></span>, errorsByName);
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>successes:<span class="pl-pds">'</span></span>, successesByName);
+}).done();</pre></div>
+
+<p>Passing an array of promises defers to the traditional form:</p>
+
+<div class="highlight highlight-javascript"><pre>qExt.allSettled([q.resolve(<span class="pl-s1"><span class="pl-pds">'</span>result<span class="pl-pds">'</span></span>), q.reject(<span class="pl-s1"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>)]).spread(<span class="pl-st">function</span> (<span class="pl-vpf">success</span>, <span class="pl-vpf">error</span>) {
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>success:<span class="pl-pds">'</span></span>, success);
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>error:<span class="pl-pds">'</span></span>, error);
+}).done();</pre></div>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
