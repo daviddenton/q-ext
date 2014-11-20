@@ -7,15 +7,12 @@
   "license": "Apache 2.0",
   "author": "daviddenton",
   "keywords": [
-    "test",
-    "builder",
-    "data",
-    "generate",
-    "random"
+    "q",
+    "promise"
   ],
   "name": "q-ext",
   "version": "1.0.1",
-  "description": "Q extensions",
+  "description": "Q extension methods",
   "main": "index.js",
   "devDependencies": {
     "chai": "^1.10.0",
