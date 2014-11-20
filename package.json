@@ -1,4 +1,15 @@
 {
+  "name": "q-ext",
+  "version": "1.0.0",
+  "description": "Q extensions",
+  "main": "index.js",
+  "devDependencies": {
+    "istanbul": "^0.3.2",
+    "mocha": "^2.0.1",
+    "coveralls": "^2.11.2",
+    "mocha-lcov-reporter": "^0.0.1",
+    "chai": "^1.10.0"
+  },
   "files": [
     "index.js",
     "LICENSE",
@@ -6,12 +17,12 @@
     "examples"
   ],
   "scripts": {
-    "start": "node_modules/mocha/bin/mocha -w",
-    "test": "node_modules/mocha/bin/mocha"
+    "test": "node_modules/mocha/bin/mocha",
+    "start": "node_modules/mocha/bin/mocha -w"
   },
   "repository": {
-    "url": "git://github.com/daviddenton/q-ext.git",
-    "type": "git"
+    "type": "git",
+    "url": "git://github.com/daviddenton/q-ext.git"
   },
   "keywords": [
     "test",
@@ -24,18 +35,7 @@
   "license": "Apache 2.0",
   "readmeFilename": "README.md",
   "dependencies": {
-    "lodash": "^2.4.1",
-    "q": "^1.1.1"
-  },
-  "devDependencies": {
-    "chai": "^1.10.0",
-    "mocha-lcov-reporter": "^0.0.1",
-    "coveralls": "^2.11.2",
-    "mocha": "^2.0.1",
-    "istanbul": "^0.3.2"
-  },
-  "main": "index.js",
-  "description": "Q extensions",
-  "version": "1.0.0",
-  "name": "q-ext"
+    "q": "^1.1.1",
+    "lodash": "^2.4.1"
+  }
 }
