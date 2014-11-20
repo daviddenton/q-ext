@@ -17,7 +17,7 @@ be spread() into a node-like callback which gives you the errorsByName and resul
 
 Simply pass an object with named promises. The results are grouped by result (fulfilled/rejected) which can then
 be spread() into a node-like callback which gives you the errorsByName and resultsByName:
-'''
+```javascript
 qExt.allSettled({
     aSuccessfulPromise: q.resolve('result'),
     anotherSuccessfulPromise: q.resolve('anotherResult'),
@@ -27,12 +27,12 @@ qExt.allSettled({
     console.log('errors:', errorsByName);
     console.log('successes:', successesByName);
 }).done();
-'''
+```
 
 Passing an array of promises defers to the traditional form:
-'''
+```javascript
 qExt.allSettled([q.resolve('result'), q.reject('error')]).spread(function (success, error) {
     console.log('success:', success);
     console.log('error:', error);
 }).done();
-'''
+```
