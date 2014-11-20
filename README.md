@@ -5,11 +5,13 @@
 [![Dependency Status](https://david-dm.org/daviddenton/q-ext.png)](https://david-dm.org/daviddenton/q-ext)
 [![devDependency Status](https://david-dm.org/daviddenton/q-ext/dev-status.png)](https://david-dm.org/daviddenton/q-ext#info=devDependencies)
 
+###What
+Methods to extend the Q promise library.
+
 ###Installation
 Via npm, simply run: ```npm install q-ext```
 
 ###Usage
-Methods to extend Q.
 
 ##allSettled
 Simply pass an object with named promises. The results are grouped by result (fulfilled/rejected) which can then
