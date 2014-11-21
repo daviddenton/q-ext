@@ -26,6 +26,23 @@ describe('q-ext', function () {
         }).done();
     });
 
+    it('allSettled when there are no errors, returns an empty object instead of undefined', function () {
+        var aggregate = qExt.allSettled({
+            aSuccessfulPromise: q.resolve('result'),
+            anotherSuccessfulPromise: q.resolve('anotherResult')
+        });
+
+        aggregate.spread(function (errorsByName, successesByName) {
+            assert.deepEqual(errorsByName, {
+
+            });
+            assert.deepEqual(successesByName, {
+                aSuccessfulPromise: 'result',
+                anotherSuccessfulPromise: 'anotherResult'
+            });
+        }).done();
+    });
+
     it('allSettled for arrays defers to q', function () {
         var aggregate = qExt.allSettled([q.resolve('result'), q.reject('error')]);
 

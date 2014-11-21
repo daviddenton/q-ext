@@ -3,7 +3,9 @@
 var q = require('q');
 var qExt = require('../lib');
 
-//Simply pass an object with named promises. The results are grouped by result (fulfilled/rejected) which can then be spread() into a node-like callback which gives you the errorsByName and resultsByName: '
+//Simply pass an object with named promises. The results are grouped by result (fulfilled/rejected)
+//which can then be spread() into a node-like callback which gives you the errorsByName and resultsByName.
+//NOTE: Unlike traditional node callbacks, the errorsByName object is NEVER undefined (instead being an empty object):'
 qExt.allSettled({
     aSuccessfulPromise: q.resolve('result'),
     anotherSuccessfulPromise: q.resolve('anotherResult'),

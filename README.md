@@ -15,7 +15,8 @@ Via npm, simply run: ```npm install q-ext```
 
 ####allSettled(namedPromiseObject) -> Promise
 Simply pass an object with named promises. The results are grouped by result (fulfilled/rejected) which can then
-be spread() into a node-like callback which gives you the errorsByName and resultsByName:
+be spread() into a node-like callback which gives you the errorsByName and resultsByName. NOTE: Unlike traditional 
+node callbacks, the errorsByName object is NEVER undefined (instead being an empty object):
 ```javascript
 qExt.allSettled({
     aSuccessfulPromise: q.resolve('result'),
